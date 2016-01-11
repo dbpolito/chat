@@ -27,5 +27,17 @@ Route::get('/', function () {
 */
 
 Route::group(['middleware' => ['web']], function () {
-    //
+    Route::get('/message', function() {
+        $message = factory('App\Message')->create();
+        
+        event(new App\Events\MessageCreated($message));
+
+        return 'Message Sent: ' . $message->toJson();
+    });
+});
+
+Route::group(['middleware' => 'web'], function () {
+    Route::auth();
+
+    Route::get('/home', 'HomeController@index');
 });

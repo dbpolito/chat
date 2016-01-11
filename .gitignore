@@ -3,3 +3,8 @@
 Homestead.yaml
 Homestead.json
 .env
+
+/.vagrant
+Vagrantfile
+public/build
+public/js

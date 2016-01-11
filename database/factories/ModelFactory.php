@@ -19,3 +19,11 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Message::class, function (Faker\Generator $faker) {
+    return [
+        'from_user_id' => 1,
+        'to_user_id' => 1,
+        'message' => $faker->text,
+    ];
+});
