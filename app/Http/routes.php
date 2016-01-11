@@ -28,9 +28,9 @@ Route::get('/', function () {
 
 Route::group(['middleware' => ['web']], function () {
     Route::get('/message', function() {
-        $message = factory('App\Message')->create();
-        
-        event(new App\Events\MessageCreated($message));
+        $message = factory('App\Message')->make();
+
+        event(new App\Events\MessageCreate($message->toArray()));
 
         return 'Message Sent: ' . $message->toJson();
     });
